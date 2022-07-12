@@ -3,9 +3,9 @@ clear all
 close all
 tic
 
-Nx = 10;
-Ny = 10;
-Nt = 10;
+Nx = 4;
+Ny = 4;
+Nt = 4;
 
 Lx = 1;
 Ly = 1;
