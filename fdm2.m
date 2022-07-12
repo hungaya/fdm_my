@@ -74,7 +74,7 @@ for k = 1:Nt
     % ...
     
     disp(M);
-    U_1_vec = dt * (B - M*(U_0));
+    U_1_vec = inv(M) * B;;
     U_1 = reshape(U_1_vec, Nx, Ny);
     
     surf(x,y,U_1');
