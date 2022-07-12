@@ -69,3 +69,19 @@ for k = 1:Nt
             B(n) = f(U_0(n)) + U_0(n)/dt;
         end
     end
+    
+    % Boundary conditions
+    % ...
+    
+    disp(M);
+    U_1_vec = dt * (B - M*(U_0));
+    U_1 = reshape(U_1_vec, Nx, Ny);
+    
+    surf(x,y,U_1');
+    xlabel('x')
+    ylabel('y')
+
+    % reset the value of U_0   
+    U_0 = U_1_vec;
+ end
+    
