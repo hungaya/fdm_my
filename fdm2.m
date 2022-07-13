@@ -81,11 +81,10 @@ for k = 1:Nt
     U_1_vec = inv(M) * B;
     U_1 = reshape(U_1_vec, Nx, Ny);
     
-    surf(x,y,U_1');
-    xlabel('x')
-    ylabel('y')
-
     % reset the value of U_0   
     U_0 = U_1_vec;
  end
     
+surf(x,y,U_1');
+xlabel('x');
+ylabel('y');
