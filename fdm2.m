@@ -78,7 +78,6 @@ for k = 1:Nt
     % Boundary conditions
     % ...
     
-    disp(M);
     U_1_vec = inv(M) * B;
     U_1 = reshape(U_1_vec, Nx, Ny);
     
