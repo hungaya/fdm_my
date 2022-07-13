@@ -122,7 +122,7 @@ for k = 1:Nt
 
     % reset the value of U_0   
     U_0 = U_1_vec;
-    disp(sprintf('%d step', k));
+    disp(sprintf('Step %d', k));
  end
  toc
 
