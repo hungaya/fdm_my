@@ -52,20 +52,25 @@ Dy_hy = Dy ./ hy;
 
 U_0 = reshape(u_0(X, Y), [], 1);
 
+for i = 2:(Nx-1)
+    for j = 2:(Ny-1)
+        % convert the cell (i,j) to the nth grid point
+        n = i + (j-1)*Nx;
+
+        M(n, n)    = 2*D_hx2(i,j) + 2*D_hy2(i,j) + Dx_hx(i,j) + Dy_hy(i,j) + (1/dt);
+        M(n, n-1)  = -D_hx2(i,j);
+        M(n, n+1)  = -D_hx2(i,j) - Dx_hx(i,j);
+        M(n, n-Nx) = -D_hy2(i,j);
+        M(n, n+Nx) = -D_hy2(i,j) - Dy_hy(i,j);
+    end
+end
+
 % loop over t-direction
 for k = 1:Nt
     % interior points
     for i = 2:(Nx-1)
         for j = 2:(Ny-1)
-            % convert the cell (i,j) to the nth grid point
             n = i + (j-1)*Nx;
-           
-            M(n, n)    = 2*D_hx2(i,j) + 2*D_hy2(i,j) + Dx_hx(i,j) + Dy_hy(i,j) + (1/dt);
-            M(n, n-1)  = -D_hx2(i,j);
-            M(n, n+1)  = -D_hx2(i,j) - Dx_hx(i,j);
-            M(n, n-Nx) = -D_hy2(i,j);
-            M(n, n+Nx) = -D_hy2(i,j) - Dy_hy(i,j);
-           
             B(n) = f(U_0(n)) + U_0(n)/dt;
         end
     end
