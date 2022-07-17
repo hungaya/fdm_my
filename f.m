@@ -4,6 +4,6 @@ function f= f(u)
   if u < EPSILON
     f = 0;
   else
-    f = u*log(abs(u));
+    f = u*log(u);
   end
 end
