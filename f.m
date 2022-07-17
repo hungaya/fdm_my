@@ -1,3 +1,9 @@
 function f= f(u)
-f= u*log(abs(u));
+  EPSILON = 1e-6;
+  u = abs(u);
+  if u < EPSILON
+    f = 0;
+  else
+    f = u*log(abs(u));
+  end
 end
